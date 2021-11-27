@@ -3,3 +3,4 @@
 .secrets.*
 **/*.log
 .idea 
+**/__pycache__ 
