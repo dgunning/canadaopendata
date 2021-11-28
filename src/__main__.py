@@ -1,7 +1,7 @@
 import typer
 from rich import print
 
-from opencanada.datasets import inventory
+from opencanada import inventory
 
 import pandas as pd
 pd.options.display.max_columns = 30
