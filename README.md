@@ -1,5 +1,11 @@
 ![Banner](https://github.com/dgunning/canadaopendata/blob/main/images/opendatalogo.png)
 # Canada Open Data
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/dgunning/canadaopendata?include_prereleases)
+![GitHub last commit](https://img.shields.io/github/last-commit/dgunning/canadaopendata)
+![GitHub issues](https://img.shields.io/github/issues-raw/dgunning/canadaopendata)
+![GitHub issues](https://img.shields.io/github/issues-pr/dgunning/canadaopendata)
+![GitHub](https://img.shields.io/github/license/dgunning/canadaopendata/awesome-readme)
+
 **canadaopendata** is a library for working with datasets and other resources in the **Canada Open Data** repository.
 
 Canada has an Open Data initiative where federal and related agencies publish data to an **Open Data Inventory**
