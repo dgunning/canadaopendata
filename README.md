@@ -4,7 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/dgunning/canadaopendata)
 ![GitHub issues](https://img.shields.io/github/issues-raw/dgunning/canadaopendata)
 ![GitHub issues](https://img.shields.io/github/issues-pr/dgunning/canadaopendata)
-![GitHub](https://img.shields.io/github/license/dgunning/canadaopendata/awesome-readme)
+![GitHub](https://img.shields.io/github/license/dgunning/canadaopendata)
 
 **canadaopendata** is a library for working with datasets and other resources in the **Canada Open Data** repository.
 
