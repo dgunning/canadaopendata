@@ -1,12 +1,14 @@
-import requests
+import logging
 from dataclasses import dataclass
-from opencanada.settings import get_config
-import json
-from typing import Dict, List
-from opencanada.utils import lang
+from functools import cached_property
+from typing import Dict, List, Any
+
+import requests
 from dateutil.parser import parse
-from functools import cached_property, lru_cache
 from rich import print
+
+from opencanada.settings import get_config
+from opencanada.utils import lang
 
 'https://open.canada.ca/data/api/action/package_show?id=4ed351cf-95d8-4c10-97ac-6b3511f359b7'
 
@@ -15,12 +17,15 @@ package_show = '/action/package_show?id='
 
 group_list = '/action/action/group_list'
 
+logger = logging.getLogger((__name__))
+
 
 def api_url(path: str):
     return f"{get_config().api_url}/{path.lstrip('/')}"
 
 
-def get_package_list():
+async def list_packages():
+    logger.info('Getting the full list of packages from Open Canada')
     resp = requests.get(api_url(package_list))
     package_json = resp.json()
     return package_json['result']
@@ -34,7 +39,7 @@ def get_group_list():
 @dataclass
 class Resource:
 
-    def __init__(self, resource_json:Dict[str, object]):
+    def __init__(self, resource_json: Dict[str, object]):
         self._json = resource_json
 
     @property
@@ -74,7 +79,7 @@ class Resource:
 class Package:
 
     def __init__(self, package_json: Dict[str, object]):
-        self._json = package_json
+        self._json: Dict[str, Any] = package_json
 
     @property
     def id(self):
@@ -132,8 +137,8 @@ def get_package(package_id: str):
     return Package(package_json)
 
 
-def get_dataset(id: str):
-    return get_package(id)
+def get_dataset(dataset_id: str):
+    return get_package(dataset_id)
 
 
 if __name__ == '__main__':

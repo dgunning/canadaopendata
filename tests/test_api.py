@@ -1,7 +1,9 @@
 from pathlib import Path
 import json
-from opencanada.api import Package, DatasetPackage
+from opencanada.api import Package, DatasetPackage, list_packages
+from opencanada.indexes import PackagesGuidIndex
 from rich import print
+import asyncio
 
 
 def get_resources_package():
@@ -35,3 +37,16 @@ def test_get_dataset_resources():
     resources = dataset.get_resources()
 
     print(resources)
+
+
+def test_list_packages():
+    packages = asyncio.run(list_packages())
+    assert len(packages) == len(set(packages))
+    package_headers = list(map(lambda s: s[:8], packages))
+    assert len(package_headers) == len(set(package_headers))
+    print(packages[:6])
+    packages_index = PackagesGuidIndex(packages)
+    assert packages_index.get('0002555a') == '0002555a-9d30-43b0-baab-a61603431a9d'
+    assert packages_index.get('a61603431a9d') == '0002555a-9d30-43b0-baab-a61603431a9d'
+    assert packages_index.get('000fe5aa') == '000fe5aa-1d77-42d1-bfe7-458c51dacfef'
+    assert packages_index.get('458c51dacfef') == '000fe5aa-1d77-42d1-bfe7-458c51dacfef'
