@@ -1,8 +1,12 @@
 [tool.poetry]
-name = "canada-opendata"
+name = "canadaopendata"
 version = "0.1.0"
 description = ""
+license = "MIT"
 authors = ["Dwight Gunning <dgunning@gmail.com>"]
+packages = [
+    { include = "opencanada", from = "src" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -17,6 +21,8 @@ requests = "^2.26.0"
 typer = "^0.4.0"
 Jinja2 = "^3.0.3"
 openpyxl = "^3.0.9"
+pytest = "^6.2.5"
+rank-bm25 = "^0.2.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
